@@ -1,0 +1,36 @@
+body {
+    background-color: #fefefe;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .app-promo {
+    background-color: #fefefe;
+    color: #333;
+  }
+  
+  .phone-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .phone-image {
+    width: 80%;
+  }
+  h1, h4 {
+    color: #000;
+  }
+  
+  .btn-outline-danger {
+    border-color: tomato;
+    color: tomato;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: tomato;
+    color: #fff;
+  }
+  
+  .playstoreRow {
+    width: 80%;
+    margin: auto;
+    /* background-color: red; */
+  }

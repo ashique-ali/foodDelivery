@@ -1,0 +1,40 @@
+.collectionList {
+    width: 80%;
+    margin: auto;
+}
+
+.Collectionrow {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.buyButton {
+    border: none;
+    outline: none;
+    background: #ff4c24;
+    color: #fff;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 8px;
+}
+
+.pdpDescription {
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pdpDescription {
+    font-size: 14px;
+    padding: 0px 10px;
+}
+
+.img img:hover {
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+

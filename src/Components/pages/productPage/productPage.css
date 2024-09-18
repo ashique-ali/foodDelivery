@@ -1,0 +1,11 @@
+.pdpImage {
+    width: 40%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: -3px 13px 11px 4px #ddd;
+}
+
+.pdpImage img {
+    padding: 15px;
+    border-radius: 25px;
+}
