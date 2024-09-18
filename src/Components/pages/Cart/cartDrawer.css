@@ -1,0 +1,7 @@
+.quantity {
+    border: 1px solid #484848;
+    width: 80px;
+}
+.quantity p:hover {
+    cursor: pointer;
+}
