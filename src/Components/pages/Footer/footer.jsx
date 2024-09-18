@@ -4,6 +4,7 @@ import logo from '../../../assets/logo.png'
 import facebook from '../../../assets/facebook_icon.png' 
 import twitter from '../../../assets/twitter_icon.png'
 import linkedin from '../../../assets/linkedin_icon.png'
+import { Link } from "react-router-dom";
 // import { assets } from "../../../assets/assets";
 
 const Footer = () => {
@@ -14,9 +15,13 @@ const Footer = () => {
                     <img className='tomatologofooter' src={logo} alt="" />
                     <p>This website is just for my portfolio, it's not a real website.</p>
                     <div className="footer-social-icons">
+                        <Link to="https://www.facebook.com/">
                         <img src={facebook} alt="" />
+                        </Link>
                         <img src={twitter} alt="" />
+                        <Link to="https://www.linkedin.com/feed/">
                         <img src={linkedin} alt="" />
+                        </Link>
                     </div>
                 </div>
                 <div className="footer-content-center">
