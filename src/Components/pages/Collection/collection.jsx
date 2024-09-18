@@ -42,7 +42,7 @@ const Menu = ({ category, setCategory }) => {
     return (
         <div className='explore-menu' id='explore-menu'>
             <h1 className='h1e'>Our Menu Collection</h1>
-            <p className='explore-menu-text'>Choose from a diverse menu featuring a delectable array of dishes.</p>
+            <p className='explore-menu-text text-capitalize'>Choose from a diverse menu featuring a delectable array of dishes.</p>
             <Slider {...settings}>
                 {menu_list.map((item, index) => {
                     return (

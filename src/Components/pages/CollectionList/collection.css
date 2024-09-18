@@ -7,6 +7,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    grid-row-gap: 35px;
 }
 
 .buyButton {
@@ -20,21 +21,29 @@
 }
 
 .pdpDescription {
-    -webkit-line-clamp: 1;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 12px;
+    /* padding: 0px 10px; */
 }
 
-.pdpDescription {
+.img img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.pdpTitle span {
     font-size: 14px;
-    padding: 0px 10px;
 }
 
-.img img:hover {
-    transform: translateY(-20px);
-    transition: transform 0.3s ease;
+.price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff4c24;
+    margin-top: 5px;
+    margin-bottom: 8px;
 }
 
+.rating {
+    width: 80px;
+    height: fit-content;
+}
 

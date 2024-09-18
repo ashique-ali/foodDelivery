@@ -9,6 +9,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CartDrawer from '../pages/Cart/cartDrawer';
 
 const Navbar = () => {
     const [menu, setMenu] = useState("home");
@@ -101,8 +102,9 @@ const Navbar = () => {
                     <span className='darmodeBtn' onClick={toggleDarkMode}>
                         {darkMode ? <MdOutlineDarkMode /> : <CiLight />}
                     </span>
-                    <div className='basketIcon'>
+                    <div className='basketIcon position-relative' data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <img src={basket} alt="Basket" />
+                        <p className='total position-absolute'>1</p>
                     </div>
                     <button className='signIn' onClick={handleShowModal}>Sign In</button>
                 </div>
@@ -141,6 +143,7 @@ const Navbar = () => {
                     }
                 </div>
             )}
+            <CartDrawer />
         </div>
     );
 };
