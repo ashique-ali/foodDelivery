@@ -9,7 +9,7 @@ const Dashboard = () => {
                         <h4 className="text-white mt-4">Dashboard</h4>
                         <ul className="nav flex-column mt-4 d-flex gap-3">
                             <li className="nav-item">
-                                <Link to="addproduct" className="text-white text-decoration-none">Add Product</Link>
+                                <Link to="addproduct/:{}" className="text-white text-decoration-none">Add Product</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="text-white text-decoration-none" to="productlist">Product List</Link>

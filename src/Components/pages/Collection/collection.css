@@ -87,9 +87,21 @@
     text-align: center;
 }
 
-@media (max-width:1050px) {
+@media (max-width: 767px) {
+    .h1e {
+        font-size: 17px;
+    }
+
     .explore-menu-text {
         max-width: 100%;
         font-size: 14px;
+    }
+
+    .explore-menu {
+        width: 90%;
+    }
+
+    .collectionList h3 {
+        font-size: 18px;
     }
 }

@@ -1,36 +1,73 @@
 body {
-    background-color: #fefefe;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .app-promo {
-    background-color: #fefefe;
-    color: #333;
-  }
-  
-  .phone-image img {
-    max-width: 100%;
-    height: auto;
-  }
-  .phone-image {
-    width: 80%;
-  }
-  h1, h4 {
-    color: #000;
-  }
-  
-  .btn-outline-danger {
-    border-color: tomato;
-    color: tomato;
-  }
-  
-  .btn-outline-danger:hover {
-    background-color: tomato;
-    color: #fff;
-  }
-  
+  background-color: #fefefe;
+  font-family: 'Arial', sans-serif;
+}
+
+.app-promo {
+  /* background-color: #fefefe; */
+  color: #333;
+}
+
+.phone-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.phone-image {
+  width: 80%;
+}
+
+h1,
+h4 {
+  color: #000;
+}
+
+.btn-outline-danger {
+  border-color: tomato;
+  color: tomato;
+}
+
+.btn-outline-danger:hover {
+  background-color: tomato;
+  color: #fff;
+}
+
+.playstoreRow {
+  width: 80%;
+  margin: auto;
+  /* background-color: red; */
+}
+
+.gap {
+  gap: 1.5rem;
+}
+
+.mobileApp {
+  text-align: -webkit-right;
+}
+
+@media(max-width : 767px) {
   .playstoreRow {
-    width: 80%;
-    margin: auto;
-    /* background-color: red; */
+    width: 90%;
+    flex-direction: column;
   }
+
+  .mobileApp {
+    padding: 0px 40px;
+  }
+
+  .phone-image {
+    width: 100%;
+  }
+
+  .textSize {
+    font-size: 14px;
+  }
+  .fontSize {
+    font-size: 14px;
+  }
+
+  .gap {
+    gap: 10px !important;
+  }
+}

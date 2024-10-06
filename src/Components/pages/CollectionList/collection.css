@@ -47,3 +47,40 @@
     height: fit-content;
 }
 
+.paginationButton {
+    border: none;
+    outline: none;
+    background: #ff4c24;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 15px;
+}
+
+@media(max-width: 767px) {
+    .collectionList {
+        width: 90%;
+    }
+
+    .Collectionrow a {
+        width: 100%;
+    }
+
+    .Collectionrow {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        grid-row-gap: 20px;
+    }
+
+    .rating {
+        display: none;
+    }
+
+    .pdpDescription {
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-top: 0.25rem !important;
+    }
+}
