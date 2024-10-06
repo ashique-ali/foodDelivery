@@ -1,3 +1,5 @@
+
+
 .signIn {
     border: 1px solid tomato;
     border-radius: 100px;
@@ -207,4 +209,10 @@ body.dark-mode {
     text-align: center;
     font-size: 14px;
     border-radius: 100px;
+}
+
+@media (max-width: 767px) {
+    .pageWidth {
+        display: none !important;
+    }
 }

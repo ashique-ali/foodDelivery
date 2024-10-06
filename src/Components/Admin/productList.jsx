@@ -4,10 +4,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GoPencil } from "react-icons/go";
 import './admin.css';
+import { Link, useParams } from "react-router-dom";
 
 const Productlist = () => {
     const [productList, setProductList] = useState([]);
     const [deleteId, setDeleteId] = useState([]);
+    const { id } = useParams();
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemPerPage, setItemPerPage] = useState(10);
+    const itemOfLastIndex = currentPage * itemPerPage;
+    const itemOfFirstIndex = itemOfLastIndex - itemPerPage;
+    const currentItem = productList.slice(itemOfFirstIndex, itemOfLastIndex);
+    const totalPage = Math.ceil(productList.length / itemPerPage);
 
     const getAllProduct = async () => {
         try {
@@ -30,7 +38,6 @@ const Productlist = () => {
 
     const setId = (id) => {
         setDeleteId(id);
-        console.log("deleteId ::>>", deleteId);
     }
 
     const deleteHandler = async () => {
@@ -50,6 +57,19 @@ const Productlist = () => {
             toast.error(result.message);
         }
     }
+
+    const previousHandler = () => {
+        if(currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const nextHandler = () => {
+        if(currentPage < totalPage) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
     return (
         <div className="container m-0 p-4">
             <ToastContainer />
@@ -70,14 +90,16 @@ const Productlist = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {productList.length > 0 ? (
-                            productList.map((item, index) => (
+                        {currentItem.length > 0 ? (
+                            currentItem.map((item, index) => (
                                 <tr key={item._id} className="tableList">
-                                    <td>{index + 1}</td>
+                                    <td>
+                                    {(currentPage - 1) * itemPerPage + index + 1}
+                                    </td>
                                     <td>{item.name}</td>
                                     <td>
                                         <img
-                                            src={"http://localhost:4000/"+item.imageUrl}
+                                            src={"http://localhost:4000/" + item.imageUrl}
                                             alt={item.name}
                                             width="50"
                                             height="50"
@@ -88,9 +110,12 @@ const Productlist = () => {
                                     <td>{item.category}</td>
                                     <td>{item.status}</td>
                                     <td>{item.description}</td>
+
                                     <td className="d-flex gap-3">
-                                        <span className="text-danger" data-bs-toggle="modal"  data-bs-target="#exampleModal" onClick={() =>setId(item._id)} style={{cursor: 'pointer'}}><RiDeleteBin6Line /></span>
-                                        <span className="text-success" style={{cursor: 'pointer'}}><GoPencil /></span>
+                                        <span className="text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setId(item._id)} style={{ cursor: 'pointer' }}><RiDeleteBin6Line /></span>
+                                        <Link to={`/admin/addproduct/${item._id}`}>
+                                            <span className="text-success" style={{ cursor: 'pointer' }} ><GoPencil /></span>
+                                        </Link>
                                     </td>
                                 </tr>
                             ))
@@ -102,7 +127,12 @@ const Productlist = () => {
                     </tbody>
                 </table>
             </div>
-          
+            <div className="d-flex justify-content-end gap-2">
+                <button className="btn btn-success" onClick={previousHandler} disabled={currentPage === 1}>Previous</button>
+                <span className="mt-1">{currentPage}/{totalPage}</span>
+                <button className="btn btn-success" onClick={nextHandler} disabled={currentPage === totalPage}>Next</button>
+            </div>
+
             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">

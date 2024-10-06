@@ -2,6 +2,22 @@
     border: 1px solid #484848;
     width: 80px;
 }
+
 .quantity p:hover {
     cursor: pointer;
+}
+
+.borderStyle {
+    border-top: 1px solid #c1c1c1;
+}
+
+.borderStyle:last-child {
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.cartHeading {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: max-content;
 }

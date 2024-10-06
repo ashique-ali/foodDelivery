@@ -49,7 +49,6 @@ const Contact = ({ setShowModal }) => {
             } else {
                 toast.error(responseData.message);
             }
-
         } catch (error) {
             console.log('Error ::>>', error);
         }

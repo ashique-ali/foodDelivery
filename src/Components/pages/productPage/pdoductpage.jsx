@@ -3,10 +3,16 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../Footer/footer";
 import Navbar from "../../Navbar/navbar";
 import './productPage.css'
+import { addCart } from "../../../featureSlice/cartSlice";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProductPage() {
+    const dispatch = useDispatch();
     const { id } = useParams();
     const [product, setProduct] = useState([]);
+
     const getProductById = async () => {
         try {
             const response = await fetch(`http://localhost:4000/api/product/${id}`, {
@@ -25,9 +31,17 @@ function ProductPage() {
     useEffect(() => {
         getProductById();
     }, [id]);
+    
     if (!product) return <div>Loading...</div>;
+
+    const addToCartHandler = () => {
+        dispatch(addCart(product));
+        toast.success("item added to cart")
+    };
+
     return (
         <>
+            <ToastContainer />
             <Navbar />
             <div className="m-auto mt-4" style={{ width: '80%' }}>
                 <div className="bredCrumb d-flex m-0">
@@ -54,16 +68,16 @@ function ProductPage() {
                         </div>
                         <div className="d-flex align-items-baseline mb-4 border-bottom">
                             <div className="d-flex gap-2 w-75">
-                                <p> <b>Description :</b> {product.description}</p>
+                                <p><b>Description :</b> {product.description}</p>
                             </div>
                         </div>
                         <div className="d-flex gap-3 mb-4">
                             <div className="d-flex gap-3">
-                                <button className="btn" type="submit" style={{background: '#ff4c24', color: '#fff'}}>
+                                <button className="btn" type="submit" style={{ background: '#ff4c24', color: '#fff' }}>
                                     Buy now
                                 </button>
-                                <button className="btn btn-outline-secondary" type="button">
-                                    Add to bag
+                                <button className="btn btn-outline-secondary" type="button" onClick={addToCartHandler}>
+                                    Add To Bag
                                 </button>
                             </div>
                         </div>
