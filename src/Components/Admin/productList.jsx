@@ -9,10 +9,10 @@ import { Link, useParams } from "react-router-dom";
 const Productlist = () => {
     const [productList, setProductList] = useState([]);
     const [deleteId, setDeleteId] = useState([]);
-    const { id } = useParams();
+    // const { id } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const [itemPerPage, setItemPerPage] = useState(10);
-    const itemOfLastIndex = currentPage * itemPerPage;
+    const itemOfLastIndex = currentPage * itemPerPage
     const itemOfFirstIndex = itemOfLastIndex - itemPerPage;
     const currentItem = productList.slice(itemOfFirstIndex, itemOfLastIndex);
     const totalPage = Math.ceil(productList.length / itemPerPage);

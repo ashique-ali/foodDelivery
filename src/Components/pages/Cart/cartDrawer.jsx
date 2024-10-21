@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decrementQuantity, incrementQuantity, removeCartItem, setCart } from '../../../featureSlice/cartSlice';
 
 function CartDrawer() {
-    const { cart } = useSelector((state) => state.cartItem);
+    const {cart} = useSelector((state) => state.cartItem);
     const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     const dispatch = useDispatch();
 
@@ -21,6 +21,7 @@ function CartDrawer() {
         dispatch(removeCartItem(id));
         const updatedCart = cart.filter((item) => item.id !== id);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
+        console.log("updatedCart", updatedCart);
     }
 
       useEffect(() => {
