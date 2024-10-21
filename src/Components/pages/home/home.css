@@ -60,12 +60,23 @@
 
 @media (max-width:750px) {
     .header-contents{
-        max-width: 65%;
+        max-width: 62%;
+        top: 20%;
+    }
+    .header-contents h2 {
+        font-size: 17px;
     }
     .header-contents p{
         display: none;
     }
     .header-contents button{
         padding: 2vw 4vw;
+    }
+
+    .header {
+        width: 90%;
+        background-size: cover;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 }

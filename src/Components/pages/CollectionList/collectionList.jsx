@@ -5,6 +5,14 @@ import rating from '../../../assets/rating_starts.png'
 
 const CollectionList = () => {
     const [collectionList, setCollectionlist] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemPerPage, setItemPerPage] = useState(12);
+    const indexOfLastItem = currentPage * itemPerPage;
+    const [count, setCount] = useState();
+    const indexOfFirstItem = indexOfLastItem - itemPerPage;
+    const currentItem = collectionList.slice(indexOfFirstItem, indexOfLastItem);
+    const totalPage = Math.ceil(collectionList?.length / itemPerPage);
+
     const getCollection = async () => {
         const response = await fetch('http://localhost:4000/api/getProductList', {
             method: 'GET',
@@ -16,16 +24,28 @@ const CollectionList = () => {
         setCollectionlist(data.data);
     }
 
+    const previousHandler = () => {
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const nextHandler = () => {
+        if (currentPage < totalPage) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
     useEffect(() => {
         getCollection();
-    }, [])
+    }, [0])
 
     return (
         <div className="collectionList mt-4">
             <h3 className='text-capitalize'>Top dishes</h3>
             <div className="Collectionrow mt-4">
-                {collectionList.map((item, index) => (
-                    <Link className='text-dark text-decoration-none' to={`/category/${item._id}`} key={index}>
+                {currentItem.map((item, index) => (
+                    <Link className='text-dark text-decoration-none' to={`/product/${item._id}`} key={index}>
                         <div className="product-card">
                             <div className='bg-white shadow rounded rounded-3'>
                                 <div className='img' style={{ margin: 'auto', height: '160px' }}>
@@ -48,6 +68,11 @@ const CollectionList = () => {
                         </div>
                     </Link>
                 ))}
+            </div>
+            <div className='d-flex justify-content-end gap-2 mt-4'>
+                <button className='paginationButton' onClick={previousHandler}>Previous</button>
+                <span className='m-0 mt-1'>{currentPage}/{totalPage}</span>
+                <button className='paginationButton' onClick={nextHandler}>Next</button>
             </div>
         </div>
     );

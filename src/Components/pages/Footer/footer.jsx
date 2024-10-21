@@ -37,7 +37,9 @@ const Footer = () => {
                     <h2>GET IN TOUCH</h2>
                     <ul>
                         <li>+91 6386374397</li>
-                        <li>developer.ashiq121@gmail.com</li>
+                        <Link to="https://mail.google.com/mail/u/0/#inbox?compose=new" style={{textDecoration: "none"}}> 
+                            <li className="text-white">ashique.ali.sde@gmail.com</li>
+                        </Link>
                     </ul>
                 </div>
             </div>

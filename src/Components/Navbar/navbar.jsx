@@ -10,17 +10,17 @@ import { CiLight } from "react-icons/ci";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CartDrawer from '../pages/Cart/cartDrawer';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
+    const { cart } = useSelector((item) => item.cartItem);
     const [menu, setMenu] = useState("home");
     const [showModal, setShowModal] = useState(false);
     const [showModal2, setShowModal2] = useState(false);
     const [showpassword, setshowpassword] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
-    const [formData, setformData] = useState({
-        "email": '',
-        "password": ''
-    })
+    const [formData, setformData] = useState({ "email": '', "password": '' })
+
     const handleShowModal = () => {
         setShowModal(true);
     };
@@ -54,7 +54,6 @@ const Navbar = () => {
             ...formData,
             [event.target.name]: event.target.value
         });
-        console.log("Form Data ::>>", formData)
     };
 
     const fetchLogin = async (e) => {
@@ -73,7 +72,6 @@ const Navbar = () => {
             } else {
                 toast.error(responseData.message)
             }
-            setShowModal(false);
             setformData({
                 email: "",
                 password: "",
@@ -82,6 +80,7 @@ const Navbar = () => {
             console.log("Error ::>>", error);
         }
     }
+
     return (
         <div className='pageWidth' style={{
             background: darkMode ? 'black' : 'white',
@@ -104,7 +103,7 @@ const Navbar = () => {
                     </span>
                     <div className='basketIcon position-relative' data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <img src={basket} alt="Basket" />
-                        <p className='total position-absolute'>1</p>
+                        <p className='total position-absolute'>{cart.length}</p>
                     </div>
                     <button className='signIn' onClick={handleShowModal}>Sign In</button>
                 </div>
